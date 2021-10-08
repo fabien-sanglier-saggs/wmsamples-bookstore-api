@@ -1,0 +1,35 @@
+version: "3.8"
+
+networks:
+  stack:
+
+services:
+  
+  msr-jdbc:
+    image: ${REG:-harbor.saggs.cloud/library/}webmethods-msr-art-jdbc:${TAG_MSR:-dev-10.7-latest}
+    ports:
+      - 5555:5555
+    hostname: msr
+    environment: 
+      JAVA_MIN_MEM: 1g
+      JAVA_MAX_MEM: 1g
+      JAVA_OPTS: "-Dtest=1 -Dtes2=2 -Dtest3=3"
+    volumes:
+      - ${PWD}/assets/licenses/msr-licenseKey.xml:/opt/softwareag/IntegrationServer/config/licenseKey.xml:rw
+      - ${PWD}/assets/sql/postgresql.jar:/opt/softwareag/IntegrationServer/packages/WmJDBCAdapter/code/jars/postgresql.jar:ro
+      - ./workspace/replicate/:${SAG_HOME}/IntegrationServer/replicate/
+      - ${PWD}/assets/IS/Packages/BookstoreAPIs/:${SAG_HOME}/IntegrationServer/packages/BookstoreAPIs:rw
+    networks:
+      - stack
+
+  # postgress db + load the sql scripts to create tables and fill with some sample records
+  postgres:
+    image: postgres:13.4-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes: 
+      - ${PWD}/assets/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ${PWD}/assets/sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
