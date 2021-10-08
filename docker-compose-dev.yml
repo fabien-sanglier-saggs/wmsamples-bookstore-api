@@ -17,8 +17,8 @@ services:
     volumes:
       - ${PWD}/assets/licenses/msr-licenseKey.xml:/opt/softwareag/IntegrationServer/config/licenseKey.xml:rw
       - ${PWD}/assets/sql/postgresql.jar:/opt/softwareag/IntegrationServer/packages/WmJDBCAdapter/code/jars/postgresql.jar:ro
-      - ./workspace/replicate/:${SAG_HOME}/IntegrationServer/replicate/
-      - ${PWD}/assets/IS/Packages/BookstoreAPIs/:${SAG_HOME}/IntegrationServer/packages/BookstoreAPIs:rw
+      - ${PWD}/workspace/replicate:/opt/softwareag/IntegrationServer/replicate:rw
+      - ${PWD}/assets/IS/Packages/BookstoreAPI:/opt/softwareag/IntegrationServer/packages/BookstoreAPI:rw
     networks:
       - stack
 
@@ -33,3 +33,5 @@ services:
     volumes: 
       - ${PWD}/assets/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
       - ${PWD}/assets/sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+    networks:
+      - stack
