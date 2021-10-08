@@ -10,6 +10,7 @@ workspace/
 licenses/
 *.zip
 !wMPackages/*.zip
+*.bak
 
 # IDE
 .idea
