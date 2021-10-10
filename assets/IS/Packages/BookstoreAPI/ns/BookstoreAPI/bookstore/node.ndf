@@ -296,7 +296,7 @@
         <record name="price" javaclass="com.wm.util.Values">
           <value name="name">price</value>
           <value name="source">QUERY</value>
-          <value name="type">FLOAT</value>
+          <value name="type">STRING</value>
           <null name="description"/>
           <Boolean name="isRequired">true</Boolean>
           <Boolean name="isArray">false</Boolean>
@@ -308,7 +308,7 @@
         <record name="num_of_pages" javaclass="com.wm.util.Values">
           <value name="name">num_of_pages</value>
           <value name="source">QUERY</value>
-          <value name="type">INTEGER</value>
+          <value name="type">STRING</value>
           <null name="description"/>
           <Boolean name="isRequired">true</Boolean>
           <Boolean name="isArray">false</Boolean>

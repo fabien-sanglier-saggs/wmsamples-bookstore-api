@@ -151,9 +151,6 @@
 
 <MAPDELETE FIELD="/book;4;0;BookstoreAPI.docs:bookJson">
 </MAPDELETE>
-
-<MAPDELETE FIELD="/id;1;0">
-</MAPDELETE>
 </MAP>
 </INVOKE>
 </FLOW>

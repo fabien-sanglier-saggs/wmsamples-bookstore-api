@@ -99,7 +99,7 @@
 
   <!-- nodes -->
 
-<MAPINVOKE SERVICE="BookstoreAPI.utils:parseNumber" VALIDATE-IN="$none" VALIDATE-OUT="$none" INVOKE-ORDER="0">
+<MAPINVOKE SERVICE="BookstoreAPI.utils:parseInteger" VALIDATE-IN="$none" VALIDATE-OUT="$none" INVOKE-ORDER="0">
 
   <!-- nodes -->
 
@@ -120,30 +120,6 @@
 </MAP>
 </MAPINVOKE>
 
-<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/title;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/title;1;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/author;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/author;1;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/type;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/type;1;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/price;3.5;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/price;3.11;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/num_of_pages;3.8;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/num_of_pages;3.8;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/publisher;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/publisher;1;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/language;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/language;1;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/isbn;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/isbn;1;0">
-</MAPCOPY>
-
 <MAPINVOKE SERVICE="BookstoreAPI.utils:parseDate" VALIDATE-IN="$none" VALIDATE-OUT="$none" INVOKE-ORDER="0">
 
   <!-- nodes -->
@@ -151,9 +127,6 @@
 <MAP MODE="INVOKEINPUT">
 
   <!-- nodes -->
-
-<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/publish_date;1;0" TO="/inString;1;0">
-</MAPCOPY>
 
 <MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/inPattern;1;0">
   <DATA ENCODING="XMLValues" I18N="true">
@@ -210,6 +183,9 @@
 </Values>
 </DATA>
 </MAPSET>
+
+<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/publish_date;1;0" TO="/inString;1;0">
+</MAPCOPY>
 </MAP>
 
 <MAP MODE="INVOKEOUTPUT">
@@ -217,6 +193,66 @@
   <!-- nodes -->
 
 <MAPCOPY FROM="/outDate;3.9;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/publish_date;3;0">
+</MAPCOPY>
+</MAP>
+</MAPINVOKE>
+
+<MAPINVOKE SERVICE="BookstoreAPI.utils:parseShort" VALIDATE-IN="$none" VALIDATE-OUT="$none" INVOKE-ORDER="0">
+
+  <!-- nodes -->
+
+<MAP MODE="INVOKEINPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/num_of_pages;1;0" TO="/inString;1;0">
+</MAPCOPY>
+</MAP>
+
+<MAP MODE="INVOKEOUTPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/outNumber;3.8;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/num_of_pages;3.8;0">
+</MAPCOPY>
+</MAP>
+</MAPINVOKE>
+
+<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/title;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/title;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/author;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/author;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/type;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/type;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/publisher;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/publisher;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/language;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/language;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/isbn;1;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/isbn;1;0">
+</MAPCOPY>
+
+<MAPINVOKE SERVICE="BookstoreAPI.utils:parseFloat" VALIDATE-IN="$none" VALIDATE-OUT="$none" INVOKE-ORDER="0">
+
+  <!-- nodes -->
+
+<MAP MODE="INVOKEINPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/bookJson;4;0;BookstoreAPI.docs:bookJson/price;1;0" TO="/inString;1;0">
+</MAPCOPY>
+</MAP>
+
+<MAP MODE="INVOKEOUTPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/outNumber;3.5;0" TO="/bookDb;4;0;BookstoreAPI.docs:bookDb/price;3.5;0">
 </MAPCOPY>
 </MAP>
 </MAPINVOKE>

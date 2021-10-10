@@ -99,10 +99,43 @@ public final class utils
 
 
 
-	public static final void parseNumber (IData pipeline)
+	public static final void parseFloat (IData pipeline)
         throws ServiceException
 	{
-		// --- <<IS-START(parseNumber)>> ---
+		// --- <<IS-START(parseFloat)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required inString
+		// [o] object:0:required outNumber
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String inString = IDataUtil.getNonEmptyString(pipelineCursor, "inString");
+		pipelineCursor.destroy();
+		
+		Float outNumber = null;
+		if(null != inString && ! "".equals(inString)){
+			try{
+				outNumber = Float.parseFloat(inString);
+			} catch(NumberFormatException nfe){
+				outNumber = null;
+				throw new ServiceException(nfe);
+			}
+		}
+		
+		// return pipeline
+		IDataCursor pipelineCursor_1 = pipeline.getCursor();
+		IDataUtil.put( pipelineCursor_1, "outNumber", outNumber );
+		pipelineCursor_1.destroy();
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void parseInteger (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(parseInteger)>> ---
 		// @sigtype java 3.5
 		// [i] field:0:required inString
 		// [o] object:0:required outNumber
@@ -114,6 +147,39 @@ public final class utils
 		if(null != inString && ! "".equals(inString)){
 			try{
 				outNumber = Integer.parseInt(inString);
+			} catch(NumberFormatException nfe){
+				outNumber = null;
+				throw new ServiceException(nfe);
+			}
+		}
+		
+		// return pipeline
+		IDataCursor pipelineCursor_1 = pipeline.getCursor();
+		IDataUtil.put( pipelineCursor_1, "outNumber", outNumber );
+		pipelineCursor_1.destroy();
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void parseShort (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(parseShort)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required inString
+		// [o] object:0:required outNumber
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String inString = IDataUtil.getNonEmptyString(pipelineCursor, "inString");
+		pipelineCursor.destroy();
+		
+		Short outNumber = null;
+		if(null != inString && ! "".equals(inString)){
+			try{
+				outNumber = Short.parseShort(inString);
 			} catch(NumberFormatException nfe){
 				outNumber = null;
 				throw new ServiceException(nfe);
