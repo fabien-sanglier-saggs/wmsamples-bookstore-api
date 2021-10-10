@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS book (
   num_of_pages smallint,
   publisher VARCHAR(50) NOT NULL,
   language VARCHAR(50) NOT NULL,
-  isbn VARCHAR(13) NOT NULL,
+  isbn VARCHAR(25) NOT NULL,
   PRIMARY KEY (book_id)
 );
