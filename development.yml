@@ -16,7 +16,6 @@ services:
       JAVA_OPTS: "-Dtest=1 -Dtes2=2 -Dtest3=3"
     volumes:
       - ${PWD}/workspace/replicate:/opt/softwareag/IntegrationServer/replicate:rw
-      - ${PWD}/workspace/config:/opt/softwareag/IntegrationServer/config:rw
       - ${PWD}/assets/licenses/msr-licenseKey.xml:/opt/softwareag/IntegrationServer/config/licenseKey.xml:rw
       - ${PWD}/assets/sql/postgresql.jar:/opt/softwareag/IntegrationServer/packages/WmJDBCAdapter/code/jars/postgresql.jar:ro
       - ${PWD}/assets/IS/Packages/BookstoreAPI:/opt/softwareag/IntegrationServer/packages/BookstoreAPI:rw
