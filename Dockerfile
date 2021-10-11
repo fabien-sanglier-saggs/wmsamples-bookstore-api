@@ -27,5 +27,17 @@ COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/sql/postgresql.jar $SAG_HOME/In
 # copy the package specific settings
 COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/IS/configs/application.properties $SAG_HOME/IntegrationServer/
 
-## copy package(s)
-COPY --chown=${SAG_USERID}:${SAG_GROUPID} build/IS/BookstoreAPI.zip ${PACKAGES_AUTO_DEPLOY_DIR}/
+# copy package(s)
+## NOTE: copying to the auto-deploy package conflicts with the application-properties which are loaded before...
+## COPY --chown=${SAG_USERID}:${SAG_GROUPID} build/IS/BookstoreAPI.zip ${PACKAGES_AUTO_DEPLOY_DIR}/
+COPY --chown=${SAG_USERID}:${SAG_GROUPID} build/IS/BookstoreAPI.zip $PACKAGES_DIR/
+USER root
+RUN true \
+    && yum -y install unzip \
+    && unzip $PACKAGES_DIR/BookstoreAPI.zip -d $PACKAGES_DIR/BookstoreAPI/ \
+    && rm -f $PACKAGES_DIR/BookstoreAPI.zip \
+    && chown -R ${SAG_USERID}:${SAG_GROUPID} $PACKAGES_DIR/BookstoreAPI/ \
+    && yum remove -y unzip \
+    && yum clean all \
+    && true
+USER ${SAG_USER}
