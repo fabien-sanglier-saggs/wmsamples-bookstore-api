@@ -12,6 +12,11 @@ services:
       dockerfile: Dockerfile
       args:
         BASE_IMAGE: ${REG:-harbor.saggs.cloud/library/}webmethods-msr-art-jdbc:${TAG}
+    environment:
+      - JDBC_HOST=bookstoreapidb
+      - JDBC_PORT=5432
+      - JDBC_USERNAME=postgres
+      - JDBC_USERPASSWORD=postgres
     ports:
       - 5555:5555
     volumes:
@@ -36,6 +41,5 @@ services:
       - '5432:5432'
     volumes: 
       - ${PWD}/workspace/postgres-data:/var/lib/postgresql/data
-    hostname: postgres
     networks:
       - stack

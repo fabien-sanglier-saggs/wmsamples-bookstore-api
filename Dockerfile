@@ -5,6 +5,18 @@ LABEL maintainer="fabien.sanglier@softwareaggov.com" \
       name="webMethods Bookstore API" \
       summary="BookStore CRUD API built with webMEthods Microservice Runtime"
 
+ENV JDBC_HOST=""
+ENV JDBC_PORT=""
+ENV JDBC_DBNAME=""
+ENV JDBC_USERNAME=""
+ENV JDBC_USERPASSWORD=""
+ENV JDBC_PROPS=""
+
+# default users
+ENV BUILTIN_USER_ADMIN_PASSWORD="changeme"
+ENV BUILTIN_USER_DEVELOPER_PASSWORD="changeme"
+ENV BUILTIN_USER_REPLICATOR_PASSWORD="changeme"
+
 # Optional: ADD license key (good option for a closed secure environment)
 # But for general distribution though let's not...and have the users map their own license key
 # COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/licenses/msr-licenseKey.xml $SAG_HOME/IntegrationServer/config/licenseKey.xml
@@ -14,7 +26,6 @@ COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/sql/postgresql.jar $SAG_HOME/In
 
 # copy the package specific settings
 COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/IS/configs/application.properties $SAG_HOME/IntegrationServer/
-COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/IS/configs/globalVariables.xml $SAG_HOME/IntegrationServer/config/globalVariables.cnf
 
 ## copy package(s)
 COPY --chown=${SAG_USERID}:${SAG_GROUPID} build/IS/BookstoreAPI.zip ${PACKAGES_AUTO_DEPLOY_DIR}/
