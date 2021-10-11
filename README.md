@@ -7,8 +7,15 @@ A sample webMethods project to demonstrate the quick creation of a CRUD API for 
 
 This project leverages a Postgres Database to store data.
 As a result, the application needs to make JDBC calls to the backend database.
-Instead of storing the JDBC driver in GIT, let's just download the JDBC jar for postgres: https://jdbc.postgresql.org/download.html
+Instead of storing the JDBC driver in GIT, let's just download the JDBC jar for postgres from https://jdbc.postgresql.org/download.html
 And place it in ./assets/sql/postgresql.jar so it can be picked up by the build process and added in the right place downstream.
+
+ie.
+
+```bash
+curl https://jdbc.postgresql.org/download/postgresql-42.2.24.jar -o ./assets/sql/postgresql.jar
+```
+
 ### License
 
 If you have a license of MSR (which will be required to run the MSR runtime), make sure to download it and add it to the following path:
