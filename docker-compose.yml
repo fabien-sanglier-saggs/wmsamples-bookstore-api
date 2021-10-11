@@ -16,6 +16,8 @@ services:
       - 5555:5555
     volumes:
       - ${PWD}/assets/licenses/msr-licenseKey.xml:/opt/softwareag/IntegrationServer/config/licenseKey.xml:rw
+    networks:
+      - stack
     depends_on:
       - bookstoreapidb
 
