@@ -16,8 +16,8 @@ services:
       - 5555:5555
     volumes:
       - ${PWD}/assets/licenses/msr-licenseKey.xml:/opt/softwareag/IntegrationServer/config/licenseKey.xml:rw
-    networks:
-      - stack
+    depends_on:
+      - bookstoreapidb
 
   # postgress db + load the sql scripts to create tables and fill with some sample records
   bookstoreapidb:
@@ -34,5 +34,6 @@ services:
       - '5432:5432'
     volumes: 
       - ${PWD}/workspace/postgres-data:/var/lib/postgresql/data
+    hostname: postgres
     networks:
       - stack

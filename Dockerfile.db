@@ -6,5 +6,5 @@ LABEL maintainer="fabien.sanglier@softwareaggov.com" \
       summary="Backend Postgres DB for BookStore CRUD API"
 
 # copy db files
-COPY --chown=sagadmin:sagadmin assets/sql/create_tables.sql /docker-entrypoint-initdb.d/
-COPY --chown=sagadmin:sagadmin assets/sql/fill_tables.sql /docker-entrypoint-initdb.d/
+COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/sql/create_tables.sql /docker-entrypoint-initdb.d/
+COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/sql/fill_tables.sql /docker-entrypoint-initdb.d/
