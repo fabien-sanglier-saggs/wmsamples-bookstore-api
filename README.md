@@ -12,4 +12,8 @@ And place in ./sql/postgresql.jar
 docker run -v "${PWD}:/src"  --env "projectName=wmsamples-bookstore-api" harbor.saggs.cloud/library/webmethods-abe:10.7-latest-local
 ```
 
-projectName=wmsamples-bookstore-api
+## Build the docker image
+
+```bash
+docker run -v "${PWD}:/src"  --env "projectName=wmsamples-bookstore-api" harbor.saggs.cloud/library/webmethods-abe:10.7-latest-local
+```
