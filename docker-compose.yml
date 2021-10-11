@@ -17,6 +17,9 @@ services:
       - JDBC_PORT=5432
       - JDBC_USERNAME=postgres
       - JDBC_USERPASSWORD=postgres
+      - BUILTIN_USER_ADMIN_PASSWORD=SomethingStrong123!
+      - BUILTIN_USER_DEVELOPER_PASSWORD=SomethingStrong456!
+      - BUILTIN_USER_REPLICATOR_PASSWORD=SomethingStrong789!
     ports:
       - 5555:5555
     volumes:

@@ -14,13 +14,3 @@ services:
       - ./workspace/sagdevops-ci-assets:/opt/softwareag/buildtools/sagdevops-ci-assets-0.0.1:ro
     networks:
       - stack
-
-  unittests:
-    image: ${REG:-harbor.saggs.cloud/library/}webmethods-testsuite:${TAG}
-    command: ant test
-    environment:
-      - EXIT_AFTER_COMMAND=false
-    volumes:
-      - .:/src:rw
-    networks:
-      - stack
