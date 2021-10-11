@@ -44,7 +44,7 @@ Temporary Items
 .apdisk
 
 # Compiled class file
-*.class
+# *.class
 
 # Log file
 *.log
