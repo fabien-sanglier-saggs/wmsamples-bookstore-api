@@ -1,0 +1,26 @@
+version: "3.8"
+
+networks:
+  stack:
+
+services:
+  
+  compile:
+    image: ${REG:-harbor.saggs.cloud/library/}webmethods-abe:${TAG}
+    environment:
+      - projectName=wmsamples-bookstore-api
+    volumes:
+      - .:/src:rw
+      - ./workspace/sagdevops-ci-assets:/opt/softwareag/buildtools/sagdevops-ci-assets-0.0.1:ro
+    networks:
+      - stack
+
+  unittests:
+    image: ${REG:-harbor.saggs.cloud/library/}webmethods-testsuite:${TAG}
+    command: ant test
+    environment:
+      - EXIT_AFTER_COMMAND=false
+    volumes:
+      - .:/src:rw
+    networks:
+      - stack
