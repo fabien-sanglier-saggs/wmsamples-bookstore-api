@@ -15,6 +15,8 @@ services:
       - JDBC_PORT=5432
       - JDBC_USERNAME=postgres
       - JDBC_USERPASSWORD=postgres
+      - JDBC_DBNAME=
+      - JDBC_PROPS=
       - BUILTIN_USER_ADMIN_PASSWORD=manage
       - BUILTIN_USER_DEVELOPER_PASSWORD=manage
       - BUILTIN_USER_REPLICATOR_PASSWORD=manage
