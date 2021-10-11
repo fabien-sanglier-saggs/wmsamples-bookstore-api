@@ -1,0 +1,10 @@
+ARG BASE_IMAGE
+FROM $BASE_IMAGE as base
+
+LABEL maintainer="fabien.sanglier@softwareaggov.com" \
+      name="webMethods Bookstore API backend Postgres DB" \
+      summary="Backend Postgres DB for BookStore CRUD API"
+
+# copy db files
+COPY --chown=sagadmin:sagadmin assets/sql/create_tables.sql /docker-entrypoint-initdb.d/
+COPY --chown=sagadmin:sagadmin assets/sql/fill_tables.sql /docker-entrypoint-initdb.d/
