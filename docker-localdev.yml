@@ -15,6 +15,11 @@ services:
       - ${PWD}/application-localdev.properties:/opt/softwareag/IntegrationServer/application.properties:rw
       - ${PWD}/libs/postgresql.jar:/opt/softwareag/IntegrationServer/packages/WmJDBCAdapter/code/jars/postgresql.jar:ro
       - ${PWD}/assets/IS/Packages/BookstoreAPI:/opt/softwareag/IntegrationServer/packages/BookstoreAPI:rw
+    environment:
+      - JDBC_HOST=postgres
+      - JDBC_PORT=5432
+      - JDBC_USERNAME=postgres
+      - JDBC_USERPASSWORD=postgres
     networks:
       - stack
 
