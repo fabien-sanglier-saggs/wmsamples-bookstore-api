@@ -6,7 +6,7 @@ networks:
 services:
   
   compile:
-    image: ${REG}webmethods-abe:${TAG}
+    image: ${REG}webmethods-abe:${ABE_TAG}
     environment:
       - projectName=wmsamples-bookstore-api
     volumes:
