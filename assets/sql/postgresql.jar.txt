@@ -1,1 +1,0 @@
-Download Postgres JDBC jar, and place in this folder with name: postgresql.jar

@@ -13,7 +13,7 @@ And place it in ./assets/sql/postgresql.jar so it can be picked up by the build 
 ie.
 
 ```bash
-curl https://jdbc.postgresql.org/download/postgresql-42.2.24.jar -o ./assets/sql/postgresql.jar
+curl https://jdbc.postgresql.org/download/postgresql-42.2.24.jar -o ./libs/postgresql.jar
 ```
 
 ### License

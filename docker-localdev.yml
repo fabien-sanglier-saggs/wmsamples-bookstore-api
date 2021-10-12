@@ -5,26 +5,15 @@ networks:
 
 services:
   
-  msr-jdbc:
+  localdev:
     image: ${REG:-harbor.saggs.cloud/library/}webmethods-msr-art-jdbc:${TAG}
     ports:
       - 5555:5555
-    hostname: msr
-    environment: 
-      - JDBC_HOST=postgres
-      - JDBC_PORT=5432
-      - JDBC_USERNAME=postgres
-      - JDBC_USERPASSWORD=postgres
-      - JDBC_DBNAME=
-      - JDBC_PROPS=
-      - BUILTIN_USER_ADMIN_PASSWORD=manage
-      - BUILTIN_USER_DEVELOPER_PASSWORD=manage
-      - BUILTIN_USER_REPLICATOR_PASSWORD=manage
     volumes:
       - ${PWD}/workspace/replicate:/opt/softwareag/IntegrationServer/replicate:rw
       - ${PWD}/assets/licenses/msr-licenseKey.xml:/opt/softwareag/IntegrationServer/config/licenseKey.xml:rw
-      - ${PWD}/assets/IS/configs/application.properties:/opt/softwareag/IntegrationServer/application.properties:rw
-      - ${PWD}/assets/sql/postgresql.jar:/opt/softwareag/IntegrationServer/packages/WmJDBCAdapter/code/jars/postgresql.jar:ro
+      - ${PWD}/application-localdev.properties:/opt/softwareag/IntegrationServer/application.properties:rw
+      - ${PWD}/libs/postgresql.jar:/opt/softwareag/IntegrationServer/packages/WmJDBCAdapter/code/jars/postgresql.jar:ro
       - ${PWD}/assets/IS/Packages/BookstoreAPI:/opt/softwareag/IntegrationServer/packages/BookstoreAPI:rw
     networks:
       - stack

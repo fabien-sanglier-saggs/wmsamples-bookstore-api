@@ -11,6 +11,5 @@ services:
       - projectName=wmsamples-bookstore-api
     volumes:
       - .:/src:rw
-      - ./workspace/sagdevops-ci-assets:/opt/softwareag/buildtools/sagdevops-ci-assets-0.0.1:ro
     networks:
       - stack
