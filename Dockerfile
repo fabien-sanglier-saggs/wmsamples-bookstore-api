@@ -22,10 +22,10 @@ ENV BUILTIN_USER_REPLICATOR_PASSWORD="changeme"
 # COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/licenses/msr-licenseKey.xml $SAG_HOME/IntegrationServer/config/licenseKey.xml
 
 # copy jdbc jar in jdbc adapter
-COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/sql/postgresql.jar $SAG_HOME/IntegrationServer/packages/WmJDBCAdapter/code/jars/
+COPY --chown=${SAG_USERID}:${SAG_GROUPID} libs/postgresql.jar $SAG_HOME/IntegrationServer/packages/WmJDBCAdapter/code/jars/
 
 # copy the package specific settings
-COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/IS/configs/application.properties $SAG_HOME/IntegrationServer/
+COPY --chown=${SAG_USERID}:${SAG_GROUPID} application.properties $SAG_HOME/IntegrationServer/
 
 # copy package(s)
 ## NOTE: copying to the auto-deploy package conflicts with the application-properties which are loaded before...
