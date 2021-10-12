@@ -16,7 +16,7 @@ services:
       - JDBC_HOST=bookstoreapidb
       - JDBC_PORT=5432
       - JDBC_USERNAME=postgres
-      - JDBC_USERPASSWORD=postgres
+      - JDBC_USERPASSWORD=veryStrongPAssword123!
       - BUILTIN_USER_ADMIN_PASSWORD=SomethingStrong123!
       - BUILTIN_USER_DEVELOPER_PASSWORD=SomethingStrong456!
       - BUILTIN_USER_REPLICATOR_PASSWORD=SomethingStrong789!
@@ -39,7 +39,7 @@ services:
         BASE_IMAGE: postgres:13.4-alpine
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=veryStrongPAssword123!
     ports:
       - '5432:5432'
     volumes: 
