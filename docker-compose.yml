@@ -6,12 +6,12 @@ networks:
 services:
   
   bookstoreapi:
-    image: ${REG:-harbor.saggs.cloud/library/}wmsamples-bookstore-api:${TAG}
+    image: ${REG}wmsamples-bookstore-api:${TAG}
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        BASE_IMAGE: ${REG:-harbor.saggs.cloud/library/}webmethods-msr-art-jdbc:${TAG}
+        BASE_IMAGE: ${REG}webmethods-msr-art-jdbc:${MSR_TAG}
     environment:
       - JDBC_HOST=bookstoreapidb
       - JDBC_PORT=5432
@@ -31,7 +31,7 @@ services:
 
   # postgress db + load the sql scripts to create tables and fill with some sample records
   bookstoreapidb:
-    image: ${REG:-harbor.saggs.cloud/library/}wmsamples-bookstore-api-db:${TAG}
+    image: ${REG}wmsamples-bookstore-api-db:${TAG}
     build:
       context: .
       dockerfile: Dockerfile.db

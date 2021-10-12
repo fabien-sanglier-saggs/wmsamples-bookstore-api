@@ -6,7 +6,7 @@ networks:
 services:
   
   localdev:
-    image: ${REG:-harbor.saggs.cloud/library/}webmethods-msr-art-jdbc:${TAG}
+    image: ${REG}webmethods-msr-art-jdbc:${MSR_TAG}
     ports:
       - 5555:5555
     volumes:
