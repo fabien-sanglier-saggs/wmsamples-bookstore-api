@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FLOW VERSION="3.0" CLEANUP="true">
+  <COMMENT></COMMENT>
 
   <!-- nodes -->
 
@@ -13,6 +14,11 @@
 </MAP>
 
 <MAP MODE="OUTPUT">
+</MAP>
+</INVOKE>
+
+<MAP TIMEOUT="" MODE="STANDALONE">
+  <COMMENT></COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -95,7 +101,6 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
-    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -131,9 +136,5 @@
 
 <MAPCOPY FROM="/books;4;1;BookstoreAPI.docs:bookJson" TO="/output;4;1;BookstoreAPI.apis.book_.docTypes:book">
 </MAPCOPY>
-
-<MAPDELETE FIELD="/books;4;1;BookstoreAPI.docs:bookJson">
-</MAPDELETE>
 </MAP>
-</INVOKE>
 </FLOW>
