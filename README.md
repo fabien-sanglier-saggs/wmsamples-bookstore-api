@@ -30,13 +30,13 @@ More info on how to download and install designer for free at: https://tech.foru
 ## Develop the project
 
 ```bash
-docker-compose -f docker-development.yml up -d
+docker-compose -f docker-localdev.yml up -d
 ```
 
 ## Build the wM project
 
 ```bash
-docker run -v "${PWD}:/src" --env "projectName=wmsamples-bookstore-api" harbor.saggs.cloud/library/webmethods-abe:10.7-latest-local
+docker run -v "${PWD}:/src" --env "projectName=wmsamples-bookstore-api" harbor.saggs.cloud/library/webmethods-abe:dev-10.7-latest
 ```
 
 ## Build the docker images
