@@ -3,6 +3,9 @@ version: "3.8"
 networks:
   stack:
 
+volumes:
+  postgresdata:
+ 
 services:
   
   bookstoreapi:
@@ -43,6 +46,6 @@ services:
     ports:
       - '5432:5432'
     volumes: 
-      - ${PWD}/workspace/postgres-data:/var/lib/postgresql/data
+      - postgresdata:/var/lib/postgresql/data
     networks:
       - stack
