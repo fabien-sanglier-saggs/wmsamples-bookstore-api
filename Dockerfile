@@ -30,14 +30,7 @@ COPY --chown=${SAG_USERID}:${SAG_GROUPID} application.properties $SAG_HOME/Integ
 # copy package(s)
 COPY --chown=${SAG_USERID}:${SAG_GROUPID} assets/IS/Packages/BookstoreAPI/ $PACKAGES_DIR/BookstoreAPI/
 
-# COPY --chown=${SAG_USERID}:${SAG_GROUPID} build/IS/BookstoreAPI.zip $PACKAGES_DIR/
-# USER root
-# RUN true \
-#     && yum -y install unzip \
-#     && unzip $PACKAGES_DIR/BookstoreAPI.zip -d $PACKAGES_DIR/BookstoreAPI/ \
-#     && rm -f $PACKAGES_DIR/BookstoreAPI.zip \
-#     && chown -R ${SAG_USERID}:${SAG_GROUPID} $PACKAGES_DIR/BookstoreAPI/ \
-#     && yum remove -y unzip \
-#     && yum clean all \
-#     && true
-# USER ${SAG_USER}
+# run Jcode to build the java code
+RUN true \
+    && $SAG_HOME/IntegrationServer/bin/jcode.sh make BookstoreAPI \
+    && true
