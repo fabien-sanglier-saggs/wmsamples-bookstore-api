@@ -134,7 +134,7 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/books;4;1;BookstoreAPI.docs:bookJson/id;1;0" TO="/output;4;1;BookstoreAPI.apis.book_.docTypes:book/id;1;0">
+<MAPCOPY FROM="/books;4;1;BookstoreAPI.docs:bookJson" TO="/output;4;1;BookstoreAPI.apis.book_.docTypes:book">
 </MAPCOPY>
 </MAP>
 </FLOW>
