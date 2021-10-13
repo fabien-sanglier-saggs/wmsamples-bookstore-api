@@ -3,6 +3,10 @@ A sample webMethods project to demonstrate the quick creation of a CRUD API for 
 
 ## Requirements
 
+### Docker desktop / Docker-compose
+
+These should be installed on the desktop of server where you want to run this
+
 ### Database JDBC driver
 
 This project leverages a Postgres Database to store data.
@@ -32,6 +36,13 @@ A simple "up" command will automatically build the images if not already up-to-d
 ```bash
 docker-compose up -d
 ```
+
+You can use the "--build" if you want to force a build everytime (should only be needed if you are actively developing the solution...see section below)
+
+```bash
+docker-compose up -d --build
+```
+
 ## Developing/Updating the package
 
 In order to actually develop/update/improve the package, a developer will need webMethods Designer (standard Eclipse with extra webMethods components / perspectives)
