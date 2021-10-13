@@ -29,7 +29,7 @@ So it can be picked up by the build process and added in the right place downstr
 
 ## Running the project
 
-Review the "docker-compose.yml" file which has the deployment details. 
+Review the "docker-compose.yml" file which has the deployment details, including the default users passwords (ie. default user Administrator will have its password set to the value of "$BUILTIN_USER_ADMIN_PASSWORD") and the DB connectivity details.
 
 A simple "up" command will automatically build the images if not already up-to-date, and launch the project:
 
@@ -41,6 +41,20 @@ You can use the "--build" if you want to force a build everytime (should only be
 
 ```bash
 docker-compose up -d --build
+```
+
+## Using the APIs
+
+The API swagger file is available at either:
+- JSON format: http://localhost:5555/rad/BookstoreAPI:bookstore?swagger.json 
+- YAML format: http://localhost:5555/rad/BookstoreAPI:bookstore?swagger.yaml
+
+From there, you can import it in your REST client of choice (ie. Postman https://www.postman.com/downloads/), or simply use CURL...
+
+ie. To call the Bookstore GETALL resource (note: you'll be asked for the basic auth password of the Administrator user, which you can find in the docker-compose.yml file - value of "$BUILTIN_USER_ADMIN_PASSWORD")
+
+```bash
+curl -H Accept:application/json -u Administrator http://localhost:5555/rad/BookstoreAPI:bookstore/book
 ```
 
 ## Developing/Updating the package

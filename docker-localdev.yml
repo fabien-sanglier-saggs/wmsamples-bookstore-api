@@ -1,7 +1,7 @@
 version: "3.8"
 
 networks:
-  stack:
+  devnet:
 
 services:
   
@@ -21,7 +21,7 @@ services:
       - JDBC_USERNAME=postgres
       - JDBC_USERPASSWORD=postgres
     networks:
-      - stack
+      - devnet
 
   # postgress db + load the sql scripts to create tables and fill with some sample records
   postgres:
@@ -30,10 +30,10 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '5432:5432'
+      - 5432:5432
     volumes: 
       - ${PWD}/workspace/postgres-data:/var/lib/postgresql/data
       - ${PWD}/assets/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
       - ${PWD}/assets/sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
     networks:
-      - stack
+      - devnet
