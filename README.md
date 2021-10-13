@@ -1,5 +1,17 @@
 # wmsamples-bookstore-api
+
 A sample webMethods project to demonstrate the quick creation of a CRUD API for a fictional Bookstore
+The project leverages:
+- a Postgres DB as the backend store for the book records.
+- the webMethods JDBC adapter to access the database
+- the webMethods REST API layer to easily create the API
+- The webMetjods flow to "string" things together
+
+Here is a simple picture of the deployment:
+
+![bookstore-api-deployment](docs/deployment.png)
+
+
 
 ## Requirements
 
