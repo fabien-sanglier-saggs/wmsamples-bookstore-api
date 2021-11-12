@@ -1,0 +1,54 @@
+version: "3.8"
+
+networks:
+  sagnet:
+
+volumes:
+  apigw-elasticdata:
+
+services:
+  
+  api:
+    image: ${AWS_ECR}/wmsamples-bookstore-api-jdbc:${TAG}
+    ports:
+      - "5555:5555"
+    environment: 
+      JAVA_MIN_MEM: 512m
+      JAVA_MAX_MEM: 512m
+      JDBC_HOST: bookstoreapidb
+      JDBC_PORT: "5432"
+      JDBC_USERNAME: postgres
+      JDBC_USERPASSWORD: veryStrongPAssword123!
+    networks:
+      - sagnet
+    depends_on:
+      - bookstoreapidb
+ 
+  apigateway:
+    image: ${REG}webmethods-apigateway-standalone:${TAG_APIGATEWAY}
+    ports:
+      - "5556:5555"
+      - "9072:9072"
+    environment: 
+      APIGW_ELASTICSEARCH_TENANTID: apigateway
+      JAVA_MIN_MEM: 512m
+      JAVA_MAX_MEM: 512m
+      IDS_HEAP_SIZE: 512m
+      JAVA_OPTS: ""
+      RUNTIME_WATT_PROPERTIES: "watt.net.timeout=400 watt.server.threadPool=50 watt.server.threadPoolMin=25 watt.net.maxClientKeepaliveConns=10"
+    volumes:
+      - apigw-elasticdata:/opt/softwareag/InternalDataStore/data:rw
+      - ../../licensing/apigateway-licenseKey.xml:/opt/softwareag/IntegrationServer/instances/default/config/licenseKey.xml:rw
+    hostname: apigateway
+    networks:
+      - sagnet
+
+  bookstoreapidb:
+    image: ${REG}wmsamples-bookstore-api-jdbc-db:${TAG}
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=veryStrongPAssword123!
+    volumes: 
+      - postgresdata:/var/lib/postgresql/data
+    networks:
+      - sagnet
