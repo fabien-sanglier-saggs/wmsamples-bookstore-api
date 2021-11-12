@@ -1,7 +1,10 @@
 version: "3.8"
 
 networks:
-  devnet:
+  sagnet:
+
+volumes:
+  apigw-elasticdata:
 
 services:
 
