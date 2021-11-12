@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <value name="http://apigateway:5555">e6b89c99-2e04-4172-a973-24b5bf9d884b</value>
+  </record>
+</IDataXMLCoder>

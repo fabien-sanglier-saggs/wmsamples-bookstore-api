@@ -12,7 +12,7 @@
   <Boolean name="modifiable">true</Boolean>
   <record name="generalInfo" javaclass="com.wm.util.Values">
     <value name="specVersion">2.0</value>
-    <value name="hostName">localhost:5555</value>
+    <value name="hostName">localdev:5555</value>
     <value name="basePath">/rad/BookstoreAPI:bookstore</value>
     <array name="schemes" type="value" depth="1">
       <value>http</value>

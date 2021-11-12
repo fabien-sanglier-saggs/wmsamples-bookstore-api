@@ -37,7 +37,7 @@ TODO: I will work towards a better way to manage the public JAR dependencies usi
 ### License(s)
 
 If you have a license of MSR (which will be required to run the MSR runtime), make sure to download it and add it to the following path:
-./assets/licenses/msr-licenseKey.xml
+./licensing/msr-licenseKey.xml
 So it can be picked up by the build process and added in the right place downstream.
 
 ## Running the project
