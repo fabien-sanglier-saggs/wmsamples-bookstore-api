@@ -81,7 +81,7 @@ Before starting the env for the first time (ie. upon initial clone), let's make 
 Run:
 
 ```bash
-docker run -v "${PWD}/assets/IS/Packages/BookstoreAPI:/opt/softwareag/IntegrationServer/packages/BookstoreAPI:rw" --entrypoint "/opt/softwareag/IntegrationServer/bin/jcode.sh" harbor.saggs.cloud/library/webmethods-msr-art-jdbc:dev-10.7-latest make BookstoreAPI
+docker-compose -f docker-localdev.yml up codebuild
 ```
 
 To start the development environment, simply use:

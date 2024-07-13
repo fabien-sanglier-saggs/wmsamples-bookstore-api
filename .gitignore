@@ -8,7 +8,6 @@ target/
 replicate/
 workspace/
 licenses/
-*.zip
 *.bak
 
 # IDE
